@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #555;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #rain {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .drop {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.6);
+            width: 2px;
+            height: 10px;
+            animation: fall linear infinite;
+            transform-origin: 50% 100%;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        #welcome-box, #commands-box {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: block; /* İlk başta görünen durumu */
+        }
+
+        #avatar, #second-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+
+        #button-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #botu-ekle, #destek-sunucusu, #komutlar {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        #botu-ekle:hover, #destek-sunucusu:hover, #komutlar:hover {
+            background-color: #f39c12;
+        }
+
+        #commands-box {
+            display: none; /* İlk başta gizli olan durumu */
+        }
+
+        #commands-box ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #commands-box li {
+            margin: 10px;
+            padding: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+        }
+
+        #home-button {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        #home-button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div id="rain"></div>
+
+    <div id="welcome-box">
+        <h1>Merhaba AncientDreams'in Web Sayfasına Hoşgeldiniz</h1>
+        <img id="avatar" src="https://cdn.discordapp.com/avatars/974736976148332554/5625eec80b5f0959c9171883f157401e.png?size=1024" alt="Avatar">
+        <p>AncientDreams'in Kurucusu</p>
+        <img id="second-avatar" src="https://cdn.discordapp.com/avatars/1182102923942051870/19d2cedfb7ec9116e4b09878a082d6ae.png?size=1024" alt="Second Avatar">
+        <p>AncientDreams</p>
+
+        <div id="button-container">
+            <button class="button" id="botu-ekle" onclick="redirectToInvitePage()">Botu Ekle</button>
+            <button class="button" id="destek-sunucusu" onclick="redirectToSupportServer()">Destek Sunucusu</button>
+            <button class="button" id="komutlar" onclick="toggleCommands()">Komutlar</button>
+        </div>
+    </div>
+
+    <div id="commands-box">
+        <h2>Komutlar</h2>
+        <ul>
+            <li>Play</li>
+            <li>Stop</li>
+            <li>addprevious</li>
+            <li>addsimilar</li>
+            <li>autoplay</li>
+            <li>clearqueue</li>
+            <li>forceskip</li>
+            <li>forward</li>
+            <li>grab</li>
+            <li>jump</li>
+            <li>loop</li>
+            <li>loopqueue</li>
+            <li>loopsong</li>
+            <li>move</li>
+            <li>moveme</li>
+            <li>nowplaying</li>
+            <li>pause</li>
+            <li>play</li>
+            <li>playlist</li>
+            <li>playprevious</li>
+            <li>playsc</li>
+            <li>playskip</li>
+            <li>playskipsc</li>
+            <li>playsongoftheday</li>
+            <li>playtop</li>
+            <li>queue</li>
+            <li>queuestatus</li>
+            <li>reconnect</li>
+            <li>removedupes</li>
+            <li>removetrack</li>
+            <li>removevoteskip</li>
+            <li>restart</li>
+            <li>resume</li>
+            <li>rewind</li>
+            <li>search</li>
+            <li>searchplaylist</li>
+            <li>searchsc</li>
+            <li>searchsimilar</li>
+            <li>seek</li>
+            <li>shuffle</li>
+            <li>skip</li>
+            <li>unshuffle</li>
+            <li>volume</li>
+            <li>8d</li>
+            <li>china</li>
+            <li>chipmunk</li>
+            <li>cleareq</li>
+            <li>clearfilter</li>
+            <li>darthvader</li>
+            <li>equalizer</li>
+            <li>nightcore</li>
+            <li>pitch</li>
+            <li>speed</li>
+            <li>slowmo</li>
+            <li>rate</li>
+            <li>tremolo</li>
+            <li>vibrato</li>
+            <li>vibrate</li>
+            <li>savedqueue</li>
+        </ul>
+        <button id="home-button" onclick="toggleWelcome()">Ana Sayfa</button>
+    </div>
+
+    <script>
+        function redirectToInvitePage() {
+            window.location.href = "https://discord.com/oauth2/authorize?client_id=1182631163022540842&scope=bot&permissions=8";
+        }
+
+        function redirectToSupportServer() {
+            window.location.href = "https://discord.gg/EJYQpfwKbf";
+        }
+
+        function toggleCommands() {
+            const welcomeBox = document.getElementById("welcome-box");
+            const commandsBox = document.getElementById("commands-box");
+
+            welcomeBox.style.display = "none";
+            commandsBox.style.display = "block";
+        }
+
+        function toggleWelcome() {
+            const welcomeBox = document.getElementById("welcome-box");
+            const commandsBox = document.getElementById("commands-box");
+
+            welcomeBox.style.display = "block";
+            commandsBox.style.display = "none";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const rainContainer = document.getElementById("rain");
+
+            for (let i = 0; i < 100; i++) {
+                createRaindrop();
+            }
+
+            function createRaindrop() {
+                const drop = document.createElement("div");
+                drop.className = "drop";
+                drop.style.left = `${Math.random() * 100}vw`;
+                drop.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                rainContainer.appendChild(drop);
+
+                // Remove the raindrop when it reaches the bottom
+                drop.addEventListener("animationiteration", function () {
+                    drop.remove();
+                    createRaindrop();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
